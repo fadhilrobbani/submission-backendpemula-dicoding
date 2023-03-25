@@ -3,9 +3,10 @@ const routes = require('./routes');
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('dotenv').config();
 
+const defaultPort = process.env.PORT || 9000;
 const init = async () => {
   const server = Hapi.server({
-    port: process.env.PORT,
+    port: defaultPort,
     host: process.env.HOST,
     routes: {
       cors: {
