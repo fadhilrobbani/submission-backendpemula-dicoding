@@ -2,7 +2,36 @@ const { nanoid } = require('nanoid');
 const books = require('./books');
 
 const getAllBooks = (request, h) => {
-  const mapBooks = books.map((book) => ({
+  const queryParam = request.query;
+  const filteredBooks = books.filter((book) => {
+    let isMatched = true;
+    if (
+      queryParam.name &&
+      !book.name
+        .toLowerCase()
+        .replace(/\s+/g, '')
+        .includes(queryParam.name.toLowerCase().replace(/\s+/g, ''))
+    ) {
+      isMatched = false;
+    }
+    if (
+      queryParam.reading !== undefined &&
+      (book.reading !== (queryParam.reading === '1') ||
+        book.reading !== (queryParam.reading !== '0'))
+    ) {
+      isMatched = false;
+    }
+    if (
+      queryParam.finished !== undefined &&
+      (book.finished !== (queryParam.finished === '1') ||
+        book.finished !== (queryParam.finished !== '0'))
+    ) {
+      isMatched = false;
+    }
+    return isMatched;
+  });
+
+  const mapBooks = filteredBooks.map((book) => ({
     id: book.id,
     name: book.name,
     publisher: book.publisher,
