@@ -1,5 +1,7 @@
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes');
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config();
 
 const init = async () => {
   const server = Hapi.server({
