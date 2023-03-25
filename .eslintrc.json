@@ -4,21 +4,13 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "extends": ["airbnb"],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-  "plugins": ["prettier"],
   "rules": {
     "no-console": "off",
-    "linebreak-style": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "endOfLine": "auto"
-      }
-    ]
+    "linebreak-style": "off"
   }
 }

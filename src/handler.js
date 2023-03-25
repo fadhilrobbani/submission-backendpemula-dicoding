@@ -6,8 +6,7 @@ const getAllBooks = (request, h) => {
   const filteredBooks = books.filter((book) => {
     let isMatched = true;
     if (
-      queryParam.name &&
-      !book.name
+      queryParam.name && !book.name
         .toLowerCase()
         .replace(/\s+/g, '')
         .includes(queryParam.name.toLowerCase().replace(/\s+/g, ''))
@@ -15,16 +14,12 @@ const getAllBooks = (request, h) => {
       isMatched = false;
     }
     if (
-      queryParam.reading !== undefined &&
-      (book.reading !== (queryParam.reading === '1') ||
-        book.reading !== (queryParam.reading !== '0'))
+      queryParam.reading !== undefined && (book.reading !== (queryParam.reading === '1') || book.reading !== (queryParam.reading !== '0'))
     ) {
       isMatched = false;
     }
     if (
-      queryParam.finished !== undefined &&
-      (book.finished !== (queryParam.finished === '1') ||
-        book.finished !== (queryParam.finished !== '0'))
+      queryParam.finished !== undefined && (book.finished !== (queryParam.finished === '1') || book.finished !== (queryParam.finished !== '0'))
     ) {
       isMatched = false;
     }
